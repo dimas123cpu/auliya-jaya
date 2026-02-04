@@ -1,0 +1,809 @@
+/* ==========================================================================
+   1. RESET & DASAR
+   ========================================================================== */
+*/ html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.divider {
+  width: 80px;
+  height: 4px;
+  background: #f1c40f;
+  margin: 20px auto;
+}
+
+/* ==========================================================================
+   2. NAVBAR & NAVIGASI
+   ========================================================================== */
+.navbar {
+  background: #ffffff;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: #222;
+}
+
+.logo span {
+  color: #f1c40f;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links li {
+  margin-left: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #f1c40f;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 150px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  list-style: none;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content li a {
+  padding: 10px 10px;
+  display: block;
+}
+
+.nav-contact {
+  background: #f1c40f;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+/* Hamburger & Overlay */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+}
+
+.bar {
+  height: 3px;
+  width: 100%;
+  background-color: #333;
+  transition: 0.3s;
+}
+
+.overlay.active {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+/* Menyelaraskan Logo dan Teks */
+.logo {
+  display: flex;
+  align-items: center; /* Membuat logo dan teks sejajar di tengah secara vertikal */
+  gap: 12px; /* Jarak antara gambar logo dan teks nama */
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: #222;
+}
+
+/* Mengatur ukuran gambar logo */
+.logo-img {
+  height: 45px; /* Sesuaikan tinggi logo dengan tinggi navbar */
+  width: auto; /* Lebar otomatis mengikuti proporsi gambar */
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   3. REUSABLE COMPONENTS
+   ========================================================================== */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: #222;
+  text-transform: uppercase;
+}
+
+.section-header h2 span {
+  color: #f1c40f;
+}
+
+.section-header p {
+  color: #666;
+  margin-top: 10px;
+}
+
+.extra-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.extra-content.active {
+  max-height: 1000px;
+  opacity: 1;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: #f1c40f;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   4. SECTIONS (About, Menu, Blog, Research, News)
+   ========================================================================== */
+
+/* About Section */
+.about-section {
+  padding: 100px 5%;
+  background-color: #fff;
+}
+
+.about-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.about-image {
+  flex: 1;
+  min-width: 400px;
+  position: relative;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 20px 20px 0px #f1c40f;
+  display: block;
+}
+
+.about-text {
+  flex: 1.2;
+  min-width: 300px;
+}
+
+.experience-badge {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  background: #222;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  border-bottom: 5px solid #f1c40f;
+}
+
+.experience-badge .years {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #f1c40f;
+}
+
+/* Menu Section */
+.menu-section {
+  padding: 120px 5% 80px;
+  background-color: #ffffff;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.menu-item {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+  border: 1px solid #eee;
+}
+
+.menu-item:hover {
+  transform: translateY(-10px);
+}
+
+.menu-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.menu-text {
+  padding: 25px;
+}
+
+.menu-text h3 {
+  margin-bottom: 15px;
+  color: #222;
+}
+
+/* Blog Section */
+.blog-section {
+  padding: 120px 5% 80px;
+  background-color: #fcfcfc;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.blog-card {
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.3s;
+  border: 1px solid #f0f0f0;
+}
+
+.blog-image {
+  padding: 15px 15px 0 15px;
+}
+
+.blog-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.blog-content {
+  padding: 20px 25px 25px;
+}
+
+.blog-date {
+  font-size: 0.75rem;
+  color: #f1c40f;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* Research Section */
+.research-page {
+  padding: 120px 5% 80px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.research-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  border-top: 5px solid #f1c40f;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s;
+}
+
+.tag {
+  background: #eee;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+/* News Section */
+.news-page {
+  padding: 120px 5% 80px;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 900px;
+  margin: 50px auto 0;
+}
+
+.news-card {
+  display: flex;
+  gap: 30px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+}
+
+.news-img {
+  flex: 1;
+  min-width: 250px;
+}
+
+.news-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-content {
+  flex: 2;
+  padding: 30px;
+}
+
+/* ==========================================================================
+   5. CONTACT & MAP
+   ========================================================================== */
+.contact-page {
+  padding: 120px 5% 60px;
+}
+
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.contact-info .info-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.btn-send {
+  background: #f1c40f;
+  border: none;
+  padding: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.map-container {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+/* Floating Contact Button */
+.floating-contact-fixed {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #f1c40f;
+  color: #333;
+  padding: 15px 25px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition: all 0.3s ease;
+  cursor: none;
+}
+
+.floating-contact-fixed:hover {
+  transform: scale(1.1) translateY(-5px);
+  background-color: #e6b800;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.floating-contact-fixed .contact-icon {
+  font-size: 20px;
+}
+
+.floating-contact {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #f1c40f;
+  color: #222;
+  padding: 12px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+/* ==========================================================================
+   6. FOOTER
+   ========================================================================== */
+.main-footer {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+    url("https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80");
+  background-size: cover;
+  color: #ffffff;
+  padding-top: 60px;
+  border-top: 5px solid #f1c40f;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5% 40px;
+}
+
+.footer-column h3 {
+  margin-bottom: 25px;
+}
+
+.footer-column p {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: #f1c40f;
+  padding-left: 5px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.social-box {
+  width: 35px;
+  height: 35px;
+  background: #444;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.social-box:hover {
+  background: #f1c40f;
+  color: #222;
+}
+
+.footer-bottom {
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #333;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* ==========================================================================
+   8. MEDIA QUERIES (Responsiveness)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .hamburger {
+    display: flex;
+  }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 200px;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    padding: 20px 30px;
+    transition: 0.4s;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  }
+  .nav-links.active {
+    right: 0;
+  }
+  .nav-links li {
+    margin: 15px 0;
+    width: 100%;
+  }
+  .about-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .about-image {
+    min-width: 100%;
+  }
+  .about-text {
+    min-width: 100%;
+    text-align: left;
+  }
+  .about-image img {
+    box-shadow: 10px 10px 0px #f1c40f;
+  }
+  .experience-badge {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    margin-top: 20px;
+    display: inline-block;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+  .contact-wrapper,
+  .about-wrapper {
+    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+  .news-card {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .floating-contact-fixed {
+    padding: 15px;
+    bottom: 20px;
+    right: 20px;
+  }
+  .floating-contact-fixed .contact-text {
+    display: none;
+  }
+  .floating-contact {
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .contact-text {
+    display: none;
+  }
+  .logo-img {
+    height: 35px;
+  }
+  .logo {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 60px 5%;
+  }
+  .about-image {
+    min-width: 100%;
+  }
+}
+/* TAMBAHKAN DI PALING BAWAH */
+@media (max-width: 992px) {
+  /* Memastikan sub-menu tidak melayang dan mendorong menu lain ke bawah */
+  .nav-links .dropdown-content {
+    position: static !important;
+    width: 100%;
+    box-shadow: none;
+    padding-left: 20px;
+    background: #fdfdfd;
+    border-left: 3px solid #f1c40f;
+    margin: 5px 0;
+  }
+
+  /* Reset margin agar teks sub-menu tidak terpotong ke kanan */
+  .nav-links .dropdown-content li {
+    margin-left: 0 !important;
+  }
+}
